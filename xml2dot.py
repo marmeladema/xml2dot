@@ -43,7 +43,7 @@ class Xml2DotHandler(ContentHandler):
 			label += "<<TABLE><TR><TD>"+name+"</TD></TR>"
 			if node["attributes"]:
 				label += "<TR><TD>"
-				label += "<br>".join(["%s = %s" % (item[0], item[1]) for item in node["attributes"].items()])
+				label += "<BR/>".join(["%s = %s" % (item[0], item[1]) for item in node["attributes"].items()])
 				label += "</TD></TR>"
 			if node["content"]:
 				label += "<TR><TD>" + node["content"] + "</TD></TR>"
@@ -60,4 +60,4 @@ class Xml2DotHandler(ContentHandler):
 		if self.parent:
 			print("%s -> %s;" % (self.parent[-1]["name"], node["name"]))
 
-doc = parse(sys.argv[1], Xml2DotHandler())
+doc = parse(sys.argv[1], Xml2DotHandler(html = True))
